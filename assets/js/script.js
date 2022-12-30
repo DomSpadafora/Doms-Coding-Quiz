@@ -1,4 +1,4 @@
-var time = 5;
+var time = 60;
 var clockId;
 
 function startClock(){
