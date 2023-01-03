@@ -18,7 +18,7 @@ main {
     border: 2px solid black;
     height: 40vh;
     border-radius: 15px;
-    
+    padding: 5vh 0 0 0;
 }
 
 button {
@@ -26,4 +26,29 @@ button {
     color: white;
     padding: 10px;
     border-radius: 8px;
+}
+
+#answers {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 0 auto;
+}
+
+#correct {
+    color: green;
+    border-bottom: 4px solid green;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 5rem;
+    display: none;
+}
+
+#incorrect {
+    color: red;
+    border-bottom: 4px solid red;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 5rem;
+    display: none;
 }

@@ -1,30 +1,11 @@
-var time = 5;
+var qI = 0;
 var clockId;
-//Create the 4 questions for the quiz.
-var questions = [{
-    q: 'What is the key word to create a variable?',
-    choices: ['HTML', 'CSS', 'var', 'flexbox'],
-    correct: 'var',
-},
-{
-    q: 'Which coding language is considered the foundation/structure of a webpage?',
-    choices: ['HTML', 'CSS', 'JavaScript', 'Python'],
-    correct: 'HTML',
-}, 
-{
-    q: 'A container object that holds a fixed number of values of a single type is?',
-    choices: ['array', 'object', 'string', 'boolean'],
-    correct: 'array',
-}, 
-{
-    q: 'Which primitive type is an expression that evaluates to be either true or false?',
-    choices: ['number', 'string', 'boolean', 'undefined'],
-    correct: 'boolean',
-}];
+var time = 60;
+var score = 0;
 
-//Iterate the array of quesions.
+//need to stop time and setup high score section
 
-function startClock() {
+const startClock = () => {
     time--;
 
     if (time < 1) {
@@ -35,9 +16,41 @@ function startClock() {
     clock.innerHTML = time;
 }
 
-const beginQuiz = () => {
-    console.log('Hello world!!!');
+const handleCorrect = () => {
+    console.log('Correct!!!!')
+    score +=25;
+    correct.style.display = 'block'; 
+    setTimeout(()=>correct.style.display = 'none', 1000)
+    qI++;
+    handleQuestions();
+}
 
+const handleIncorrect = () => {
+    console.log('Incorrect!!!')
+    time -=10;
+    incorrect.style.display = 'block'; 
+    setTimeout(()=>incorrect.style.display = 'none', 1000)
+    qI++;
+    handleQuestions();
+}
+
+const handleAnswers = answer => {
+    answer==questions[qI].C ? handleCorrect() : handleIncorrect();
+};
+
+const handleQuestions = () => {
+    let { Q, A } = questions[qI];
+    main.innerHTML = `<h1>${Q}</h1><div id="answers"></div>`;
+
+    A.forEach(ans => {
+        answers.innerHTML += `<button onclick = "handleAnswers('${ans}')" class="answers">${ans}</button>`
+    });
+};
+
+const beginQuiz = () => {
+    
+    
+    handleQuestions();
     clockId = setInterval(startClock, 1000);
 };
 
