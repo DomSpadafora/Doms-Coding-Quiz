@@ -12,6 +12,7 @@ const startClock = () => {
         clearInterval(clockId);
         time = 0;
         endQuiz();
+        
     }
 
     clock.innerHTML = time;
