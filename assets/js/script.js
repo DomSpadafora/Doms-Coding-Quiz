@@ -11,6 +11,7 @@ const startClock = () => {
     if (time < 1) {
         clearInterval(clockId);
         time = 0;
+        endQuiz();
     }
 
     clock.innerHTML = time;
@@ -18,21 +19,31 @@ const startClock = () => {
 
 //functionality when correct answer has been selected
 const handleCorrect = () => {
-    console.log('Correct!!!!');
+    console.log('Correct!');
     correct.style.display = 'block'; 
     setTimeout(()=>correct.style.display = 'none', 1000)
     qI++;
-    handleQuestions();
+    // check if we answer all questions 
+    if (qI >= questions.length) {
+    // what happens if we have answered all the questions??
+        endQuiz()
+    } else {
+        handleQuestions(); 
+    }
 }
 
 //functionality when incorrect answer has been selected
 const handleIncorrect = () => {
-    console.log('Incorrect!!!')
+    console.log('Incorrect!')
     time -=10;
     incorrect.style.display = 'block'; 
     setTimeout(()=>incorrect.style.display = 'none', 1000)
     qI++;
-    handleQuestions();
+    if (qI >= questions.length) {
+        endQuiz()
+    } else {
+        handleQuestions(); 
+    }
 }
 //create function for answering the questions
 const handleAnswers = answer => {
@@ -52,12 +63,17 @@ const handleQuestions = () => {
 
 //If all questions have been answered and time is left on the clock.???
 const endQuiz = () => {
+    //need to stop the clock at end of quiz
+
+    //need to set the score
+    //enter initials to log for high score
     console.log('end of quiz')
 }
 
 const beginQuiz = () => {
-
+    //function to bring in questions and answers to page
     handleQuestions();
+    //begins the clock
     clockId = setInterval(startClock, 1000);
 };
 
