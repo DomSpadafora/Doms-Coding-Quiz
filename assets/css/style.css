@@ -52,3 +52,21 @@ button {
     font-size: 5rem;
     display: none;
 }
+
+table {
+    border: 1px solid;
+    width: 25%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+#highscore-buttons {
+    padding-top: 30px
+}
