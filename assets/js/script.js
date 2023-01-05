@@ -48,6 +48,7 @@ const handleQuestions = () => {
     });
 };
 
+//aftering ending quiz we need to save the score and redirect to highscores page
 const handleInitials = () => {
     let name = document.getElementById('initials').value
     if(!name) return alert('Need intials')
@@ -58,7 +59,7 @@ const handleInitials = () => {
     window.location = 'highscore.html'
 };
 
-//If all questions have been answered and time is left on the clock. Need to end quiz and score
+//If all questions have been answered and time is left on the clock. Need to end quiz
 const endQuiz = () => {
     clearInterval(clockId);
     main.innerHTML = `
