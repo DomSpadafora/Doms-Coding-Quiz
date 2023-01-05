@@ -55,10 +55,10 @@ const handleInitials = () => {
     let store = localStorage.scores ? JSON.parse(localStorage.scores) : [];
     store.push({initials:name,score:time});
     localStorage.scores = JSON.stringify(store);
-    window.location.pathname = 'highscore.html'
+    window.location = 'highscore.html'
 };
 
-//If all questions have been answered and time is left on the clock.???
+//If all questions have been answered and time is left on the clock. Need to end quiz and score
 const endQuiz = () => {
     clearInterval(clockId);
     main.innerHTML = `
