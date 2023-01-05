@@ -12,47 +12,34 @@ const startClock = () => {
         clearInterval(clockId);
         time = 0;
         endQuiz();
-        
     }
-
     clock.innerHTML = time;
-}
+};
 
 //functionality when correct answer has been selected
 const handleCorrect = () => {
-    console.log('Correct!');
     correct.style.display = 'block'; 
-    setTimeout(()=>correct.style.display = 'none', 1000)
-    qI++;
-    // check if we answer all questions 
-    if (qI >= questions.length) {
-    // what happens if we have answered all the questions??
-        endQuiz()
-    } else {
-        handleQuestions(); 
-    }
-}
+    setTimeout(()=>correct.style.display = 'none', 1000);
+};
 
 //functionality when incorrect answer has been selected
 const handleIncorrect = () => {
-    console.log('Incorrect!')
     time -=10;
+    clock.innerHTML = time;
     incorrect.style.display = 'block'; 
-    setTimeout(()=>incorrect.style.display = 'none', 1000)
-    qI++;
-    if (qI >= questions.length) {
-        endQuiz()
-    } else {
-        handleQuestions(); 
-    }
-}
+    setTimeout(()=>incorrect.style.display = 'none', 1000);
+};
 //create function for answering the questions
 const handleAnswers = answer => {
     answer==questions[qI].C ? handleCorrect() : handleIncorrect();
+    qI++;
+    handleQuestions();
 };
 
 //create function for pulling in the questions to webpage
 const handleQuestions = () => {
+    if(qI == questions.length) return endQuiz();
+
     let { Q, A } = questions[qI];
     main.innerHTML = `<h1>${Q}</h1><div id="answers"></div>`;
 
@@ -61,13 +48,29 @@ const handleQuestions = () => {
     });
 };
 
+const handleInitials = () => {
+    let name = document.getElementById('initials').value
+    if(!name) return alert('Need intials')
+
+    let store = localStorage.scores ? JSON.parse(localStorage.scores) : [];
+    store.push({initials:name,score:time});
+    localStorage.scores = JSON.stringify(store);
+    window.location.pathname = 'highscore.html'
+};
 
 //If all questions have been answered and time is left on the clock.???
 const endQuiz = () => {
-    //need to stop the clock at end of quiz
-
-    //need to set the score
-    //enter initials to log for high score
+    clearInterval(clockId);
+    main.innerHTML = `
+        <div id="initialsDiv">
+            <h1>All Done!!!</h1>
+            <h4>Your score: ${time}</h4>
+            <h4>Enter your initials:</h4> 
+            <input id='initials' placeholder="AAA"></input>
+            <br>
+            <button onclick="handleInitials()">Done</button>
+        </div>
+    `;
     console.log('end of quiz')
 }
 
