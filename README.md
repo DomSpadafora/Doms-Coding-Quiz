@@ -2,7 +2,7 @@
 
 ## Your Task
 
-This assignment focused on creating a timed quiz. For the first time we are integrating Javascript into our web development skills. The quiz includes 4 questions on material I have learned so far. Scoring is defined on how much time is left when the last question has been answered. Each wrong answer deducts 10 seconds. Rankings for the top 5 scores are stored on the High Scores page. 
+This assignment focused on creating a timed quiz. For the first time we are integrating Javascript into our web development skills. This quiz includes 4 questions on material I have learned in bootcamp. Scoring is defined on how much time is left when the last question has been answered. Each wrong answer deducts 10 seconds. Rankings for the top 5 scores are stored on the High Scores page. 
 
 ## User Story
 
@@ -31,6 +31,7 @@ THEN I can save my initials and my score
 ## Links to Repo and Quiz Deployed
 
 Quiz Demo: https://domspadafora.github.io/Doms-Coding-Quiz/
+
 Repo: https://github.com/DomSpadafora/Doms-Coding-Quiz.git
 
 
